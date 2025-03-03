@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    # Use the Docker image you built/pushed (e.g., from your build job).
+    image: $DOCKER_IMAGE_PREFIX/main-padash-client:latest
+
+    # Map container port 3000 to host port 3000
+    ports:
+      - "3000:3000"
+
+    # Set environment variables as needed
+    environment:
+      - NODE_ENV=production
+
+    # Always restart unless explicitly stopped
+    restart: always
+

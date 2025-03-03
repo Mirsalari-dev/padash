@@ -1,0 +1,60 @@
+stages: 
+  - build
+  - deploy
+
+variables:
+  # Define any global variables here......
+  DOCKER_IMAGE: $DOCKER_IMAGE_PREFIX/main-padash-client:latest
+
+# Build Stage
+build:
+  stage: build
+  image: docker:27.4.1
+  services:
+    - docker:27.4.1
+  before_script:
+    - docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+  script:
+    - docker build -t $DOCKER_IMAGE .
+    - docker push $DOCKER_IMAGE
+  only:
+    - main
+  tags:
+    - vps-padash
+    - padash-landing  # Ensure these tags match your runner's tags....
+
+# Deploy Stage
+deploy:
+  stage: deploy
+  image: docker:20.10.16
+  # services:
+  #   - name: docker:20.10.16-dind
+  #     command: ["--tls=false", "--host=tcp://0.0.0.0:2375"]
+  # variables:
+  #   DOCKER_HOST: "tcp://docker:2375"
+  #   DOCKER_DRIVER: "overlay2".
+  #   DOCKER_TLS_CERTDIR: ""
+  script:
+    - sudo apt-get update && sudo apt-get install -y docker-compose git
+    - sudo docker pull "$DOCKER_IMAGE"
+    - sudo rm -rf /home/gitlab-runner/main-padash-client
+    - mkdir -p /home/gitlab-runner/main-padash-client
+    - cd /home/gitlab-runner/main-padash-client
+
+    # Mark the directory as safe for Git
+    - git config --global --add safe.directory /home/ubuntu/main-padash-client
+
+    # Clone if .git does not exist, else pull
+    - if [ ! -d .git ]; then
+        git clone "https://oauth2:${DEPLOY_TOKEN}@gitlab.com/mrtz73/padash-landing.git" .;
+      else
+        git pull;
+      fi
+
+    - docker-compose down
+    - docker-compose up -d --build
+  only:
+    - main
+  tags:
+    - vps-padash
+    - padash-landing

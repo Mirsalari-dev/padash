@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "yekanBakh", Arial, Helvetica, sans-serif;
+  overflow-x: hidden !important;
+}
+
+.text-section {
+  position: relative;
+  z-index: 0;
+}
+
+.text-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("/images/text-section-bg.png") no-repeat center center / cover;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.bg-custom-desktop {
+  background-image: url("/images/move-to-top-section-bg.png");
+}
+
+.bg-custom-mobile {
+  background-image: url("/images/move-to-top-section-bg-mobile.png");
+}
+
+@media (min-width: 768px) {
+  .bg-custom-mobile {
+    background-image: url("/images/move-to-top-section-bg.png");
+  }
+}
+
+.cards-section-bg-right {
+  background-image: url("/images/cards-section-right-bg.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.cards-section-bg-left {
+  background-image: url("/images/cards-section-left-bg.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.cards-pocket-bg {
+  background-image: url("/images/cards-pocket-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.intro-section-image-right {
+  background-position: right -260px top 20px;
+}
+.intro-section-image-right:hover {
+  background-position: right -40px top 20px;
+}
+
+.intro-section-image-left {
+  background-position: left -260px top 20px;
+}
+.intro-section-image-left:hover {
+  background-position: left -40px top 20px;
+}
+.bg-pattern {
+  background-image: url("/images/bg-pattern.png");
+  background-blend-mode: lighten;
+}
+
+@keyframes move-up-down {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-30px);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-30px);
+  }
+  80% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-move {
+  animation: move-up-down 1.5s ease-in-out;
+}
+
+.group-hover .animate-move {
+  animation-play-state: paused;
+}
