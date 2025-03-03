@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import ServiceCard from "./serviceCard";
 // import ArrowLeft from "../../../../public/arrowLeft";
 
@@ -96,13 +98,13 @@ const BenefitsSection = () => {
         <div
           ref={chatContainerRef}
           className="
-            relative
-            rounded-t-[2rem] md:rounded-t-[50px] rounded-xl
-            bg-white shadow-xl
-            w-full
-            overflow-hidden
-            min-h-[340px]
-          "
+    relative
+    rounded-t-[2rem] md:rounded-t-[50px] rounded-xl
+    bg-white shadow-xl
+    w-full
+    overflow-hidden
+    min-h-[340px]
+  "
         >
           <Image
             src={"/images/bg-chat.png"}
@@ -113,11 +115,11 @@ const BenefitsSection = () => {
 
           <div
             className={`
-              absolute top-10 left-0 w-full
-              transition-opacity duration-700
-              z-10
-              ${hideHeader ? "opacity-0" : "opacity-100"}
-            `}
+      absolute top-10 left-0 w-full
+      transition-opacity duration-700
+      z-10
+      ${hideHeader ? "opacity-0" : "opacity-100"}
+    `}
           >
             <Image
               src={"/images/header-chat.png"}
@@ -131,9 +133,9 @@ const BenefitsSection = () => {
           <div
             ref={chatContentRef}
             className="
-              absolute top-0 left-0 w-full
-              py-8 px-3 pt-[300px]
-            "
+      absolute top-0 left-0 w-full
+      py-8 px-3 pt-[300px]
+    "
           >
             <Image
               src={"/images/chat.png"}
@@ -158,36 +160,15 @@ const BenefitsSection = () => {
             شما با استفاده از هریک از خدمات پاداش, امتیازاتی برای استفاده از
             مابقی خدمات دریافت میکنید
           </div>
-
-          {/* <button
-            className="
-    absolute bottom-4 left-4 px-4 py-2
-    text-sm text-[#94989E]
-    flex
-    items-center justify-between
-    border border-[#94989E]
-    border-opacity-60
-    bg-white
-    shadow
-    rounded-3xl
-    transform transition-all duration-300
-    opacity-100 scale-100 pointer-events-auto
-    md:opacity-0 md:scale-75 md:pointer-events-none
-    md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto
-  "
-          >
-            اطلاعات بیشتر
-            <ArrowLeft color="#94989E" />
-          </button> */}
         </div>
       </div>
 
       <div ref={secondSectionRef} className="flex flex-col bg-white w-full">
         <div
           className="
-      flex-1  rounded-t-[2rem] md:rounded-t-[50px] rounded-xl
-      bg-white shadow-xl overflow-hidden w-full
-    "
+flex-1  rounded-t-[2rem] md:rounded-t-[50px] rounded-xl
+bg-white shadow-xl overflow-hidden w-full
+"
         >
           <div>
             <ServiceCard isVisible={isSecondVisible} />
@@ -206,9 +187,40 @@ const BenefitsSection = () => {
               گروه خدمات بازار سرمایه پاداش منظومه‌ای از فرصت‌های شگفت‌انگیـز
               مالی را به جامعه سرمایه‌گذاران ارائه می‌کند.
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-            {/* دکمه‌ای که با هاور ظاهر می‌شود */}
-            {/* <button
+export default BenefitsSection;
+
+{
+  /* <button
+            className="
+    absolute bottom-4 left-4 px-4 py-2
+    text-sm text-[#94989E]
+    flex
+    items-center justify-between
+    border border-[#94989E]
+    border-opacity-60
+    bg-white
+    shadow
+    rounded-3xl
+    transform transition-all duration-300
+    opacity-100 scale-100 pointer-events-auto
+    md:opacity-0 md:scale-75 md:pointer-events-none
+    md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto
+  "
+          >
+            اطلاعات بیشتر
+            <ArrowLeft color="#94989E" />
+          </button> */
+}
+
+{
+  /* <button
               className="
     absolute bottom-4 left-4 px-4 py-2
     text-sm text-[#94989E]
@@ -227,12 +239,5 @@ const BenefitsSection = () => {
             >
               اطلاعات بیشتر
               <ArrowLeft color="#94989E" />
-            </button> */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default BenefitsSection;
+            </button> */
+}
