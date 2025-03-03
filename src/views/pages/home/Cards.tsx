@@ -110,7 +110,7 @@ const Cards = () => {
   return (
     <PageWrapper>
       <div className="relative min-h-[24rem] md:min-h-[35rem]">
-        <div className="flex">
+        <div className="flex ">
           <div className="flex-1 cards-section-bg-right h-[360px] md:h-[562px]"></div>
           <div className="flex-1 cards-section-bg-left h-[360px] md:h-[562px]"></div>
         </div>
