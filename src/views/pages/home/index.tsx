@@ -60,8 +60,10 @@ const Home = () => {
           "گروه خدمات بازار سرمایه پاداش در چهار محور اصلی کارگزاری، سبدگردانی، مشاور سرمایه گذاری و لیزینگ با مدیریت دارایی تخصصی خدمات ارائه می دهد."
         }
       />
+      <div>
+        <BenefitsSection />
+      </div>
 
-      <BenefitsSection />
       <TextSection
         header={
           <div>
@@ -73,7 +75,6 @@ const Home = () => {
       />
 
       <ContentSection />
-    
     </div>
   );
 };
