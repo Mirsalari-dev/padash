@@ -99,6 +99,14 @@ const Cards = () => {
     { scrollId: "section-leasing", label: "لیزینگ پاداش", top: 0 },
   ];
 
+  const [hasWindow, setHasWindow] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+
   return (
     <PageWrapper>
       <div className="relative min-h-[24rem] md:min-h-[35rem]">
@@ -107,85 +115,87 @@ const Cards = () => {
           <div className="flex-1 cards-section-bg-left h-[360px] md:h-[562px]"></div>
         </div>
 
-        <div className="container z-[999] mx-auto justify-center flex mt-[-6rem] md:mt-[-14rem] md:scale-110">
-          <div className="w-[310px] md:w-[460px] text-center justify-center items-center flex flex-col relative ">
-            <div className="absolute">
-              <Image
-                src={"/images/cards-pocket-bg.png"}
-                alt={"section"}
-                width={520}
-                height={420}
-              />
-            </div>
+        {hasWindow && (
+          <div className="container z-[999] mx-auto justify-center flex mt-[-6rem] md:mt-[-14rem] md:scale-110">
+            <div className="w-[310px] md:w-[460px] text-center justify-center items-center flex flex-col relative ">
+              <div className="absolute">
+                <Image
+                  src={"/images/cards-pocket-bg.png"}
+                  alt={"section"}
+                  width={520}
+                  height={420}
+                />
+              </div>
 
-            <div className="absolute">
-              {cardData.map((item, index) => (
-                <AnimatedCard
-                  key={index}
-                  top={item.top}
-                  isactive={activeCard === index}
-                  ishovered={hoveredCard === index}
-                  onMouseEnter={() => {
-                    setHoveredCard(index);
-                    setActiveCard(index);
-                  }}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  onClick={() => {
-                    const element = document.getElementById(item.scrollId!);
-                    const offset = 150;
+              <div className="absolute">
+                {cardData.map((item, index) => (
+                  <AnimatedCard
+                    key={index}
+                    top={item.top}
+                    isactive={activeCard === index}
+                    ishovered={hoveredCard === index}
+                    onMouseEnter={() => {
+                      setHoveredCard(index);
+                      setActiveCard(index);
+                    }}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    onClick={() => {
+                      const element = document.getElementById(item.scrollId!);
+                      const offset = 150;
 
-                    if (element) {
-                      const topPosition =
-                        element.getBoundingClientRect().top +
-                        window.scrollY -
-                        offset;
-                      window.scrollTo({
-                        top: topPosition,
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
-                  className="group md:mt-7 cursor-pointer"
-                >
-                  <Image
-                    src={"/images/pocket-card-bg.png"}
-                    alt={"section"}
-                    width={420}
-                    height={400}
-                  />
-                  <div className="absolute top-4 right-4 text-white text-lg font-bold">
-                    <span className="text-sm">{item.label}</span>
-                  </div>
+                      if (element) {
+                        const topPosition =
+                          element.getBoundingClientRect().top +
+                          window.scrollY -
+                          offset;
+                        window.scrollTo({
+                          top: topPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }}
+                    className="group md:mt-7 cursor-pointer"
+                  >
+                    <Image
+                      src={"/images/pocket-card-bg.png"}
+                      alt={"section"}
+                      width={420}
+                      height={400}
+                    />
+                    <div className="absolute top-4 right-4 text-white text-lg font-bold">
+                      <span className="text-sm">{item.label}</span>
+                    </div>
 
-                  <div
-                    className={`
+                    <div
+                      className={`
         absolute top-4 left-4 md:left-14 flex items-center space-x-2
         ${activeCard === index ? "md:flex" : "md:hidden"}
       `}
-                  >
-                    <div className="border-0 md:border border-[#E3E3E3] border-opacity-50 rounded-2xl px-3 md:px-4 text-sm py-[2px] md:py-1 flex items-center text-white ">
-                      <span className="text-[11px] md:text-xs">
-                        اطلاعات بیشتر
-                      </span>
-                      <div className="mr-1 ml-[-8px]">
-                        <ArrowLeft />
+                    >
+                      <div className="border-0 md:border border-[#E3E3E3] border-opacity-50 rounded-2xl px-3 md:px-4 text-sm py-[2px] md:py-1 flex items-center text-white ">
+                        <span className="text-[11px] md:text-xs">
+                          اطلاعات بیشتر
+                        </span>
+                        <div className="mr-1 ml-[-8px]">
+                          <ArrowLeft />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </AnimatedCard>
-              ))}
-            </div>
+                  </AnimatedCard>
+                ))}
+              </div>
 
-            <div className="absolute md:w-[478px] bottom-[-104px] md:bottom-[-165px] m-[-10px] md:m-[8px]">
-              <Image
-                src={"/images/cards-pocket.png"}
-                alt={"section"}
-                width={600}
-                height={460}
-              />
+              <div className="absolute md:w-[478px] bottom-[-104px] md:bottom-[-165px] m-[-10px] md:m-[8px]">
+                <Image
+                  src={"/images/cards-pocket.png"}
+                  alt={"section"}
+                  width={600}
+                  height={460}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </PageWrapper>
   );
