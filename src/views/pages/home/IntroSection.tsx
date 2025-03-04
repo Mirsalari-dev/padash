@@ -71,7 +71,7 @@ const IntroSection = ({
                       window.open(point.link);
                     }
                   }}
-                  className={`text-[16px] font-medium text-primary-500 ${
+                  className={`flex items-center text-nowrap rounded-xl justify-center text-[15px] border-2 border-dashed px-12 py-7 text-center font-medium text-primary-500 ${
                     point.link ? "cursor-pointer" : "cursor-default"
                   }`}
                 >

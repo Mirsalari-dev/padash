@@ -67,7 +67,7 @@ export const introSectionsData: IntroSectionData[] = [
         link: externalLinks.ebgo,
       },
       {
-        title: "ورود به سامانه معاملات(اکسیر)",
+        title: "سامانه معاملات(اکسیر)",
         text: " دانش حرفه‌ای، نیروی انسانی متخصص",
         link: externalLinks.exir,
       },
