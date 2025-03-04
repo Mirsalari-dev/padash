@@ -62,7 +62,7 @@ export const introSectionsData: IntroSectionData[] = [
         link: externalLinks.padashregister,
       },
       {
-        title: "سامانه معاملات ebgo",
+        title: "سامانه معاملات ebgo ",
         text: " خدمات تخصصی در زمینه ارزش‌گذاری شرکت‌ها، پروژه‌ها، استارتاپ‌ها و ...",
         link: externalLinks.ebgo,
       },
